@@ -74,10 +74,13 @@ input, select, textarea {
 
 .row {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+
   }
   
   .column {
-	flex: 30%;
+	/* flex: 30%; */
 	text-align: left;
   }
   
@@ -2119,6 +2122,7 @@ input, select, textarea {
 		padding: 0 2.5em;
 		text-overflow: ellipsis;
 		overflow: hidden;
+		margin: 5px;
 	}
 
 		input[type="submit"].icon:before,
