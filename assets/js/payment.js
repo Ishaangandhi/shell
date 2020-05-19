@@ -17,3 +17,4 @@ function pay() {
 }
 
 document.getElementById("buyButton").onclick = pay;
+document.getElementById("buyButton2").onclick = pay;
