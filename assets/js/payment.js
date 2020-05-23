@@ -42,7 +42,7 @@ function ipLookUp() {
         .then(
             function success(geoipResponse) {
                 var country = geoipResponse.location.country.code;
-                console.log(geoipResponse);
+                // console.log(geoipResponse);
                 if (EU.indexOf(country) >= 0) {
                     PRICE_ID = "price_HKjSLCFExNdquT";
                     document.getElementById("price").innerHTML = "€35";
