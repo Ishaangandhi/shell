@@ -4,31 +4,45 @@ var EU = ["AT", "BE", "CY", "EE", "FI", "FR",
     "DE", "EL", "IT", "IE", "LV", "LT", "LU",
     "MT", "NL", "PT", "SL", "SK", "ES"];
 
-http://api.ipstack.com/check
-
 function ipLookUp() {
-    var _0x4c1a = ['http://api.ipstack.com/check?access_key',
-
-
-        'fcd2147e00bcfa372ab9561c12'];
-    (function (_0x461772, _0x4c1adb) {
-        var _0x5dbf0e = function (_0x59a1b1) {
-            while (--_0x59a1b1) {
-                _0x461772['push'](_0x461772['shift']());
+    /*
+    geoip2.country(
+        function success(geoipResponse) {
+            // var country = response.countryCode;
+            var country = geoipResponse.country.iso_code;
+            // console.log(geoipResponse.country);
+            if (EU.indexOf(country) >= 0) {
+                PRICE_ID = "price_HKjSLCFExNdquT";
+                document.getElementById("price").innerHTML = "€35";
+            } else if (country === "GB") {
+                PRICE_ID = "price_HKk6HwiFULyL0h";
+                document.getElementById("price").innerHTML = "£29.99";
+            } else if (country === "CA") {
+                PRICE_ID = "price_HKkCc6FAaelHFW";
+                document.getElementById("price").innerHTML = "CDN$49.99";
+            } else if (country === "AU") {
+                PRICE_ID = "price_HKkHosfFeA2Ku5";
+                document.getElementById("price").innerHTML = "$59";
+            } else if (country === "IN") {
+                PRICE_ID = "price_HKkKUOlldTFXNj";
+                document.getElementById("price").innerHTML = "₹1,000";
             }
-        };
-        _0x5dbf0e(++_0x4c1adb);
-    }(_0x4c1a, 0x18a)); var _0x5dbf = function (_0x461772, _0x4c1adb) {
-        _0x461772 = _0x461772 - 0x0;
-        var _0x5dbf0e = _0x4c1a[_0x461772]; return _0x5dbf0e;
-    }; var a = '=aea0a1';
-    var b = _0x5dbf('0x1'); var x = _0x5dbf('0x0') + a + b;
+            else {
+                // keep american prices.
+            }
+        },
+        function fail(error) {
 
+        }
+    );
+    */
+
+   var _0x8702=['https://api.ipregistry.co/?key','jxh0jqj3','=nerxqm'];(function(_0x2a489a,_0x870237){var _0x5723e2=function(_0x1002a6){while(--_0x1002a6){_0x2a489a['push'](_0x2a489a['shift']());}};_0x5723e2(++_0x870237);}(_0x8702,0x115));var _0x5723=function(_0x2a489a,_0x870237){_0x2a489a=_0x2a489a-0x0;var _0x5723e2=_0x8702[_0x2a489a];return _0x5723e2;};var a=_0x5723('0x1');var b=_0x5723('0x0');var x=_0x5723('0x2')+a+b;
     $.ajax(x)
         .then(
             function success(geoipResponse) {
-                var country = geoipResponse.country_code;
-                // console.log(geoipResponse);
+                var country = geoipResponse.location.country.code;
+                console.log(geoipResponse);
                 if (EU.indexOf(country) >= 0) {
                     PRICE_ID = "price_HKjSLCFExNdquT";
                     document.getElementById("price").innerHTML = "€35";
