@@ -4,42 +4,54 @@ var EU = ["AT", "BE", "CY", "EE", "FI", "FR",
     "DE", "EL", "IT", "IE", "LV", "LT", "LU",
     "MT", "NL", "PT", "SL", "SK", "ES"];
 
-function ipLookUp() {
-    // $.ajax('https://ip-api.com/json')
-    // .then(
-    geoip2.country(
-        function success(geoipResponse) {
-            // var country = response.countryCode;
-            var country = geoipResponse.country.iso_code;
-            // console.log(geoipResponse.country);
-            if (EU.indexOf(country) >= 0) {
-                PRICE_ID = "price_HKjSLCFExNdquT";
-                document.getElementById("price").innerHTML = "€35";
-            } else if (country === "GB") {
-                PRICE_ID = "price_HKk6HwiFULyL0h";
-                document.getElementById("price").innerHTML = "£29.99";
-            } else if (country === "CA") {
-                PRICE_ID = "price_HKkCc6FAaelHFW";
-                document.getElementById("price").innerHTML = "CDN$49.99";
-            } else if (country === "AU") {
-                PRICE_ID = "price_HKkHosfFeA2Ku5";
-                document.getElementById("price").innerHTML = "$59";
-            } else if (country === "IN") {
-                PRICE_ID = "price_HKkKUOlldTFXNj";
-                document.getElementById("price").innerHTML = "₹1,000";
-            }
-            else {
-                // keep american prices.
-            }
-        },
-        function fail(error) {
+http://api.ipstack.com/check
 
-        }
-    );
-    //     },
-    //     function fail(data, status) {
-    //     }
-    // );
+function ipLookUp() {
+    var _0x4c1a = ['http://api.ipstack.com/check?access_key',
+
+
+        'fcd2147e00bcfa372ab9561c12'];
+    (function (_0x461772, _0x4c1adb) {
+        var _0x5dbf0e = function (_0x59a1b1) {
+            while (--_0x59a1b1) {
+                _0x461772['push'](_0x461772['shift']());
+            }
+        };
+        _0x5dbf0e(++_0x4c1adb);
+    }(_0x4c1a, 0x18a)); var _0x5dbf = function (_0x461772, _0x4c1adb) {
+        _0x461772 = _0x461772 - 0x0;
+        var _0x5dbf0e = _0x4c1a[_0x461772]; return _0x5dbf0e;
+    }; var a = '=aea0a1';
+    var b = _0x5dbf('0x1'); var x = _0x5dbf('0x0') + a + b;
+
+    $.ajax(x)
+        .then(
+            function success(geoipResponse) {
+                var country = geoipResponse.country_code;
+                // console.log(geoipResponse);
+                if (EU.indexOf(country) >= 0) {
+                    PRICE_ID = "price_HKjSLCFExNdquT";
+                    document.getElementById("price").innerHTML = "€35";
+                } else if (country === "GB") {
+                    PRICE_ID = "price_HKk6HwiFULyL0h";
+                    document.getElementById("price").innerHTML = "£29.99";
+                } else if (country === "CA") {
+                    PRICE_ID = "price_HKkCc6FAaelHFW";
+                    document.getElementById("price").innerHTML = "CDN$49.99";
+                } else if (country === "AU") {
+                    PRICE_ID = "price_HKkHosfFeA2Ku5";
+                    document.getElementById("price").innerHTML = "$59";
+                } else if (country === "IN") {
+                    PRICE_ID = "price_HKkKUOlldTFXNj";
+                    document.getElementById("price").innerHTML = "₹1,000";
+                }
+                else {
+                    // keep american prices.
+                }
+            },
+            function fail(error) {
+            }
+        );
 }
 ipLookUp();
 
