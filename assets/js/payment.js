@@ -5,33 +5,41 @@ var EU = ["AT", "BE", "CY", "EE", "FI", "FR",
     "MT", "NL", "PT", "SL", "SK", "ES"];
 
 function ipLookUp() {
-    $.ajax('http://ip-api.com/json')
-        .then(
-            function success(response) {
-                var country = response.countryCode;
-                if (EU.indexOf(country) >= 0) {
-                    PRICE_ID = "price_HKjSLCFExNdquT";
-                    document.getElementById("price").innerHTML = "€35";
-                } else if (country === "GB") {
-                    PRICE_ID = "price_HKk6HwiFULyL0h";
-                    document.getElementById("price").innerHTML = "£29,99";
-                } else if (country === "CA") {
-                    PRICE_ID = "price_HKkCc6FAaelHFW";
-                    document.getElementById("price").innerHTML = "CDN$49.99";
-                } else if (country === "AU") {
-                    PRICE_ID = "price_HKkHosfFeA2Ku5";
-                    document.getElementById("price").innerHTML = "$59";
-                } else if (country === "IN") {
-                    PRICE_ID = "price_HKkKUOlldTFXNj";
-                    document.getElementById("price").innerHTML = "₹1,000";
-                }
-                else {
-                    // keep american prices.
-                }
-            },
-            function fail(data, status) {
+    // $.ajax('https://ip-api.com/json')
+    // .then(
+    geoip2.country(
+        function success(geoipResponse) {
+            // var country = response.countryCode;
+            var country = geoipResponse.country.iso_code;
+            // console.log(geoipResponse.country);
+            if (EU.indexOf(country) >= 0) {
+                PRICE_ID = "price_HKjSLCFExNdquT";
+                document.getElementById("price").innerHTML = "€35";
+            } else if (country === "GB") {
+                PRICE_ID = "price_HKk6HwiFULyL0h";
+                document.getElementById("price").innerHTML = "£29,99";
+            } else if (country === "CA") {
+                PRICE_ID = "price_HKkCc6FAaelHFW";
+                document.getElementById("price").innerHTML = "CDN$49.99";
+            } else if (country === "AU") {
+                PRICE_ID = "price_HKkHosfFeA2Ku5";
+                document.getElementById("price").innerHTML = "$59";
+            } else if (country === "IN") {
+                PRICE_ID = "price_HKkKUOlldTFXNj";
+                document.getElementById("price").innerHTML = "₹1,000";
             }
-        );
+            else {
+                // keep american prices.
+            }
+        },
+        function fail(error) {
+
+        }
+    );
+    //     },
+    //     function fail(data, status) {
+    //     }
+    // );
 }
 ipLookUp();
 
