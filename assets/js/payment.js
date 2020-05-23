@@ -28,10 +28,7 @@ function ipLookUp() {
                 else {
                     // keep american prices.
                 }
-                console.log('User\'s Location Data is ', response);
-                console.log('User\'s Country', response.country);
             },
-
             function fail(data, status) {
             }
         );
