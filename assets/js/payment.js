@@ -17,7 +17,7 @@ function ipLookUp() {
                 document.getElementById("price").innerHTML = "€35";
             } else if (country === "GB") {
                 PRICE_ID = "price_HKk6HwiFULyL0h";
-                document.getElementById("price").innerHTML = "£29,99";
+                document.getElementById("price").innerHTML = "£29.99";
             } else if (country === "CA") {
                 PRICE_ID = "price_HKkCc6FAaelHFW";
                 document.getElementById("price").innerHTML = "CDN$49.99";
