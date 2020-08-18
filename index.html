@@ -18,6 +18,64 @@
 		gtag('config', 'UA-164117040-1');
 	</script>
 
+	<script>
+		var osName = "unknown";
+
+		function symByOs() {
+			var elements = document.getElementsByClassName("ctrl-icon");
+			for (var i = 0; i < elements.length; ++i) {
+				if (osName === "mac") {
+					elements[i].innerHTML = '⌘' + elements[i].innerHTML;
+				} else {
+					elements[i].innerHTML = 'ctrl' + elements[i].innerHTML;
+				}
+			}
+		}
+
+		function downloadLinkByOs() {
+			switch (osName) {
+				case "windows":
+					document.getElementById("os-link").href = "https://www.microsoft.com/en-us/p/shell-notebook/9ncrw3gttnwq?activetab=pivot:overviewtab";
+					break;
+				case "mac":
+					document.getElementById("os-link").href = "https://github.com/Ishaangandhi/shellnotebook/releases/latest/download/Shell-Notebook.dmg";
+					break;
+				case "linux":
+					document.getElementById("os-link").href = "https://github.com/Ishaangandhi/ShellNotebookLinux/releases/latest/download/Shell-Notebook.AppImage";
+					break;
+				default:
+					document.getElementById("os-link").href = "#download";
+					document.getElementById("os-link").target = "_self";
+					break;
+			}
+		}
+
+		function picByOs() {
+			if (osName === "mac") {
+				document.getElementById("vid-1").src = "images/basic-mac.mov";
+				document.getElementById("vid-2").src = "images/save-mac.png";
+				document.getElementById("vid-3").src = "images/ssh-vid-mac.mov";
+				document.getElementById("vid-4").src = "images/file-navi-mac.mov";
+			} else {
+				document.getElementById("vid-1").src = "images/basic-wl.mp4";
+				document.getElementById("vid-2").src = "images/save-wl.png";
+				document.getElementById("vid-3").src = "images/ssh-vid-wl.mp4";
+				document.getElementById("vid-4").src = "images/file-navi-wl.mp4";
+			}
+		}
+
+		window.onload = function () {
+			if (navigator.appVersion.indexOf("Win") != -1) osName = "windows";
+			if (navigator.appVersion.indexOf("Mac") != -1) osName = "mac";
+			if (navigator.appVersion.indexOf("X11") != -1) osName = "linux";
+			if (navigator.appVersion.indexOf("Linux") != -1) osName = "linux";
+
+			symByOs()
+			downloadLinkByOs()
+			picByOs()
+		}
+	</script>
+
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -55,7 +113,7 @@
 					Jupyter meets terminal. <br>
 					Save and organize your commands.
 				</p>
-				<a href="https://github.com/Ishaangandhi/shellnotebook/releases/latest/download/Shell-Notebook.dmg">
+				<a target="_blank" id="os-link" href="#">
 					<button>
 						Start for free
 					</button>
@@ -73,7 +131,7 @@
 			</div>
 
 			<div class="image" style="background-image: url('images/bg-small.jpg')">
-				<video playsinline autoplay muted loop name="File navi" src="images/basic.mov"></video>
+				<video playsinline autoplay muted loop name="File navi" id="vid-1" src="#"></video>
 			</div>
 		</section>
 
@@ -97,7 +155,7 @@
 			class="banner style1 orient-right content-align-left image-position-center fullscreen onload-image-fade-in onload-content-fade-right">
 			<div class="content">
 				<h1>Save and Organize Commands</h1>
-				<p class="major">
+				<p class="major">images/basic.mov
 					Shell Notebook was built to optimize common workflows on the terminal.
 					Keep your commonly used commands in a single location, and run them together. Effortlessly.
 
@@ -105,8 +163,8 @@
 				</p>
 			</div>
 
-			<div class="image" style="background-image: url('images/bg-small.jpg')">
-				<img src="images/save.png" alt="notebook" />
+			<div class="image" style="background-image: url('images/bg-small.jpg');">
+				<img id="vid-2" src="#" alt="notebook" />
 			</div>
 		</section>
 
@@ -121,7 +179,7 @@
 				</p>
 			</div>
 			<div class="image" style="background-image: url('images/bg-small.jpg')">
-				<video playsinline autoplay muted loop name="File navi" src="images/ssh-vid.mov" style=""></video>
+				<video playsinline autoplay muted loop name="File navi" id="vid-3" src="#"></video>
 			</div>
 		</section>
 
@@ -132,13 +190,12 @@
 				<h1>Native File Navigation</h1>
 				<p class="major">
 					No more long chains of <code>cd</code> and <code>ls</code>.
-					Navigate around your Mac the way it was supposed to be.
+					Navigate around your machine the way it was supposed to be.
 				</p>
 			</div>
 
 			<div class="image" style="background-image: url('images/bg-small.jpg')">
-				<video playsinline autoplay muted loop name="File navi" src="images/file-navi.mov" style=""></video>
-
+				<video playsinline autoplay muted loop name="File navi" id="vid-4" src="#"></video>
 			</div>
 		</section>
 
@@ -153,7 +210,7 @@
 					extended use. </br>
 			</div>
 		</section> -->
-
+		
 		<!-- Five -->
 		<section class="wrapper style1 align-center">
 			<div class="inner">
@@ -161,16 +218,16 @@
 				<p>Ergonomic keybindings for frustration-free programming.</p>
 				<div class="row">
 					<div class="column">
-						<code>⌘+T</code> New tab <br>
-						<code>⌘+O</code> Open <br>
-						<code>⌘+S</code> Save <br>
-						<code>⌘+Shift+S</code> Save as.. <br>
-						<code>⌘+D</code> Delete cell <br>
-						<code>⌘+N</code> New cell <br>
+						<code class="ctrl-icon">+T</code> New tab <br>
+						<code class="ctrl-icon">+O</code> Open <br>
+						<code class="ctrl-icon">+S</code> Save <br>
+						<code class="ctrl-icon">+Shift+S</code> Save as.. <br>
+						<code class="ctrl-icon">+D</code> Delete cell <br>
+						<code class="ctrl-icon">+N</code> New cell <br>
 					</div>
 					<div class="column">
-						<code>⌘+R</code> Connect to host <br>
-						<code>⌘+W</code> Close tab <br>
+						<code class="ctrl-icon">+R</code> Connect to host <br>
+						<code class="ctrl-icon">+W</code> Close tab <br>
 						<code>⌃⌥↑</code> Move cell up <br>
 						<code>⌃⌥↓</code> Move cell down <br>
 						<code>⇧+enter</code> Run cell <br>
@@ -181,11 +238,18 @@
 
 
 		<!-- Six -->
-		<section class="wrapper style1 align-center">
+		<section id="download" class="wrapper style1 align-center">
 			<div class="inner">
 				<h2>Get the app</h2>
+				<a href="https://www.microsoft.com/en-us/p/shell-notebook/9ncrw3gttnwq?activetab=pivot:overviewtab">
+					<button>Windows</button></a>
 				<a href="https://github.com/Ishaangandhi/shellnotebook/releases/latest/download/Shell-Notebook.dmg">
-					<button>Start for free</button></a>
+					<button>Mac</button></a>
+				<a href="https://github.com/Ishaangandhi/ShellNotebookLinux/releases/latest/download/Shell-Notebook.AppImage">
+					<button>Linux</button></a>
+				<br>
+				or
+				<br>
 				<a href="pricing"> <button id="">Buy license key</button> </a>
 			</div>
 		</section>
